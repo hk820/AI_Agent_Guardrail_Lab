@@ -1,0 +1,5 @@
+[
+  {"order_id":"ORD-1001","paid_hkd":120.0,"refundable":true,"item":"Demo headphones","customer_email":"student@example.test"},
+  {"order_id":"ORD-1002","paid_hkd":800.0,"refundable":true,"item":"Demo monitor","customer_email":"sample@example.test"},
+  {"order_id":"ORD-1003","paid_hkd":90.0,"refundable":false,"item":"Demo keyboard; return window expired","customer_email":"learner@example.test"}
+]

@@ -1,0 +1,6 @@
+[
+  {"id":"POL-REFUND","topic":"refund","text":"Synthetic classroom policy: only eligible orders may be refunded. Each refund must be positive, no more than HKD 300, and no more than the order's unrefunded paid amount. An operator must click Approve for every refund. All refunds are in-memory simulations; no money moves."},
+  {"id":"POL-PRIVACY","topic":"privacy","text":"Use synthetic data. Known email, phone, HKID, long-number, and API-key patterns are redacted before outbound prompts and after model/tool outputs. These patterns are incomplete and may over-mask numbers. Conversation memory is off by default; opt-in memory stores only three recent sanitized turns in RAM."},
+  {"id":"POL-TOOLS","topic":"tools","text":"Allowed tools: search_policy, calculate, get_order, propose_refund. No shell, unrestricted file access, web browsing, outbound email, or real payment tool exists. The model cannot approve its own action."},
+  {"id":"POL-BUDGET","topic":"budget","text":"Default limits: four model rounds and six tool calls per turn; forty attempted live completions per server process; 48,000 UTF-8 bytes per serialized model request; requested output cap of 700 tokens per call. New sandbox does not reset the live-call budget. These are request limits, not a guaranteed currency spending cap."}
+]

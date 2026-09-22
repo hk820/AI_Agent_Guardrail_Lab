@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Guardrail Lab · AI Agent Classroom</title>
+  <link rel="stylesheet" href="/styles.css">
+  <script src="/app.js" defer></script>
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="/"><span class="brand-icon">G</span><span>Guardrail <strong>Lab</strong><small>AI AGENT CLASSROOM</small></span></a>
+    <div class="top-meta"><span class="tag">LOCAL SANDBOX</span><span id="connection" class="connection">Connecting…</span></div>
+  </header>
+  <main class="layout">
+    <aside class="sidebar">
+      <div class="eyebrow">01 / SET UP</div>
+      <h2>Your playground</h2>
+      <label for="mode">Agent mode</label>
+      <select id="mode"><option value="demo">Offline demo · no API cost</option><option value="live">NexLLM · live AI</option></select>
+      <p id="mode-help" class="muted">A scripted simulator using the same guardrail code. It is not an LLM.</p>
+      <div id="live-settings" hidden>
+        <label for="model">NexLLM model ID</label>
+        <input id="model" list="model-options" placeholder="Exact ID from your account" maxlength="160" autocomplete="off">
+        <datalist id="model-options"></datalist>
+        <button id="load-models" class="subtle">Load available model IDs</button>
+        <p id="key-status" class="muted"></p>
+        <p class="muted">Add your key to .env and restart. The key stays on the Python server.</p>
+      </div>
+      <label class="toggle"><input id="remember" type="checkbox"><span>Remember recent conversation<small>Opt in · 3 sanitized turns · RAM only</small></span></label>
+      <div class="divider"></div>
+      <div class="eyebrow">02 / EXPERIMENT</div>
+      <h2>Try a scenario</h2>
+      <p class="muted">Pick a prompt, send it, and inspect the decision trace.</p>
+      <div id="scenarios" class="scenarios"></div>
+      <details class="faults"><summary>Advanced fault simulations</summary><p class="muted">Demo only. Force a bad model decision to test the enforcement code.</p><div id="fault-scenarios" class="scenarios"></div></details>
+      <div class="sidebar-foot"><span id="role-label">Role: —</span><button id="reset" class="subtle">New sandbox</button></div>
+    </aside>
+    <section class="workspace">
+      <div class="intro"><div class="eyebrow">BUILD TRUST AT EVERY STEP</div><h1>Let the agent act.<br><span>Keep the boundaries visible.</span></h1><p>Ask a question, inspect a tool call, and decide when an action should proceed.</p></div>
+      <div class="metrics"><div><span>Live API calls</span><strong id="api-count">0 / 40</strong></div><div><span>Reported live tokens</span><strong id="tokens">0</strong></div><div><span>Memory turns</span><strong id="memory-count">0 / 3</strong></div></div>
+      <section class="chat-panel" aria-label="Agent conversation">
+        <div class="panel-heading"><h2>Agent conversation</h2><span id="chat-mode" class="pill">OFFLINE DEMO</span></div>
+        <div id="chat" class="chat" role="log" aria-live="polite"><article class="message assistant"><div class="speaker">LAB GUIDE</div><p>Welcome. Start with “What is the refund policy?” or choose a scenario. Every order is synthetic, and every refund is a simulation.</p></article></div>
+        <div id="approval" class="approval" hidden><div class="eyebrow">HUMAN APPROVAL REQUIRED</div><h3>Review the proposed refund</h3><dl id="approval-details"></dl><p id="approval-expiry"></p><div class="button-row"><button id="approve" class="primary">Approve simulation</button><button id="reject" class="secondary">Reject</button></div><p class="muted">Only the exact displayed proposal can be approved. No money moves.</p></div>
+        <form id="chat-form" class="composer"><label class="sr-only" for="prompt">Your question</label><textarea id="prompt" rows="3" maxlength="2000" placeholder="Ask about policies, calculate an amount, or request a simulated refund…"></textarea><div class="composer-footer"><span id="character-count">0 / 2,000</span><button id="send" class="primary" type="submit">Send question <span aria-hidden="true">↗</span></button></div></form>
+        <div id="status" class="status" role="status">Ready to explore. No API key is needed in demo mode.</div>
+      </section>
+      <section id="ledger-panel" class="ledger-panel" hidden><div class="panel-heading"><h2>Simulation ledger</h2><span class="pill">NO MONEY MOVED</span></div><div class="table-scroll"><table><thead><tr><th>Receipt</th><th>Order</th><th>HKD</th><th>Status</th></tr></thead><tbody id="ledger"></tbody></table></div></section>
+      <p class="footnote">Teaching sandbox. Pattern filters can miss attacks and over-mask data. Refund state is shown by the approval panel and ledger. NexLLM mode sends sanitized requests to your configured provider; live usage may incur charges.</p>
+    </section>
+    <aside class="inspector">
+      <div class="eyebrow">03 / OBSERVE</div><div class="inspector-title"><h2>Guardrail monitor</h2><span class="shield">✓</span></div><p class="muted">Enforcement events and tool activity—not private model reasoning.</p>
+      <div id="guardrails" class="guardrails"></div>
+      <div class="trace-heading"><h3>Latest decision trace</h3><button id="export" class="subtle">Export</button></div><div id="run-id" class="muted small">No run yet</div>
+      <ol id="trace" class="trace"><li class="empty">Send a question to see what the harness checks.</li></ol>
+      <details class="limits"><summary>Active limits</summary><p id="limits" class="muted"></p><p class="muted">Call and payload limits are not a guaranteed currency spending cap. New sandbox keeps the process-wide live-call count.</p></details>
+    </aside>
+  </main>
+</body>
+</html>

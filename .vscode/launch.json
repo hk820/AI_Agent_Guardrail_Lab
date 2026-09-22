@@ -1,0 +1,7 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {"name":"Run Guardrail Lab","type":"debugpy","request":"launch","program":"${workspaceFolder}/app.py","cwd":"${workspaceFolder}","console":"integratedTerminal","justMyCode":true},
+    {"name":"Run guardrail tests","type":"debugpy","request":"launch","module":"unittest","args":["discover","-s","tests","-v"],"cwd":"${workspaceFolder}","console":"integratedTerminal","justMyCode":true}
+  ]
+}

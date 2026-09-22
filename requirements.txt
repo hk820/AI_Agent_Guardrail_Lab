@@ -1,0 +1,2 @@
+# No third-party Python packages are required.
+# Use Python 3.11 or newer. The app and tests use the standard library only.
